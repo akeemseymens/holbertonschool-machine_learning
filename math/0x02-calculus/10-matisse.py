@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""function poly_derivative"""
+"""Calculate the derivative of a polynomial."""
 
 
 def poly_derivative(poly):
     """Calculate the derivative of a polynomial."""
-    
     if poly and isinstance(poly, list) and all(
             isinstance(x, (int, float)) for x in poly):
         result = [poly[i] * i for i in range(1, len(poly))]
