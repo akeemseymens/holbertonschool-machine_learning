@@ -22,10 +22,10 @@ class Exponential:
         """Calculate the probability density given time period x."""
         if x is None or x < 0:
             return 0
-        return (self.lambtha * pow(2.7182818285, -1 * self.lambtha * x)
+        return (self.lambtha * pow(2.7182818285, -1 * self.lambtha * x))
 
     def cdf(self, x):
         """Calculate cumulative distribution for a given time period x."""
         if x is None or x < 0:
             return 0
-        return (self.lambtha * pow(2.7182818285, -1 * self.lambtha * x)
+        return (self.lambtha * pow(2.7182818285, -1 * self.lambtha * x))
