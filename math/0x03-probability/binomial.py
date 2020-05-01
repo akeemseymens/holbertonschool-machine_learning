@@ -17,8 +17,7 @@ class Binomial:
         else:
             if type(data) is not list:
                 raise TypeError("data must be a list")
-            if len(data) < 2:
-                raise ValueError("data must contain multiple values")
+                raise ValueError("data must contain multiple values
             mean = sum(data) / len(data)
             vari = sum([(m - mean) ** 2 for m in data]) / len(data)
             self.p = -1 * (vari / mean - 1)
