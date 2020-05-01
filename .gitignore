@@ -1,1 +1,6 @@
 math/0x02-calculus_old
+*-main.py
+*.pyc
+*.vscode
+__pycache__
+*.json
