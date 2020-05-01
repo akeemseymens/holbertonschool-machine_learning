@@ -43,4 +43,3 @@ class Poisson:
             return 1
         else:
             return m * self.my_factorial(m-1)
-        
