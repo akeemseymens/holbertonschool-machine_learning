@@ -21,7 +21,7 @@ class Poisson:
             self.lambtha = sum(data) / len(data)
 
     def pmf(self, k):
-        """Calculates probability mass at k."""
+        """Calculate probability mass at k."""
         if not isinstance(k, int):
             k = int(k)
         if k < 0:
@@ -30,7 +30,7 @@ class Poisson:
                 * pow(Poisson.e, -1 * self.lambtha) / self.my_factorial(k))
 
     def cdf(self, k):
-        """Calculates cumulative distribution at k."""
+        """Calculate cumulative distribution at k."""
         if not isinstance(k, int):
             k = int(k)
         if k < 0:
@@ -38,7 +38,7 @@ class Poisson:
         return (sum([self.pmf(n) for n in range(k + 1)]))
 
     def my_factorial(self, m):
-        """factorial of m."""
+        """Factorial of m."""
         if m == 1 or m == 0:
             return 1
         else:

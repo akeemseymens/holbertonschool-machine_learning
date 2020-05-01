@@ -17,14 +17,15 @@ class Binomial:
         else:
             if type(data) is not list:
                 raise TypeError("data must be a list")
-                raise ValueError("data must contain multiple values
+            if len(data) < 2:
+                raise ValueError("data must contain multiple values")
             mean = sum(data) / len(data)
             vari = sum([(m - mean) ** 2 for m in data]) / len(data)
             self.p = -1 * (vari / mean - 1)
             n = mean / self.p
             self.n = round(n)
             self.p *= n / self.n
-
+            
     def pmf(self, k):
         """Calculate value of PMF for given number k."""
         if type(k) is not int:
