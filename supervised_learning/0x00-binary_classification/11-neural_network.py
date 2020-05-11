@@ -62,3 +62,7 @@ class NeuralNetwork:
         self.__A2 = (np.dot(self.__W2, self.__A1) + self.__b2)
         self.__A2 = 1.0/(1.0 + np.exp(-1 * self.A2))
         return self.__A1, self.__A2
+
+    def cost(self, Y, A):
+        """cost of model using logistic regression"""
+        return -(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)).mean()
