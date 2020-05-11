@@ -15,7 +15,7 @@ class Neuron:
         self.__W = np.random.randn(1, nx)
         self.__b = 0
         self.__A = 0
-    
+
     @property
     def W(self):
         """Returns weights"""
@@ -54,4 +54,3 @@ class Neuron:
         """calculates one pass of gradient descent on the nueron"""
         self.__W = (self.__W - alpha * np.dot(X, (A - Y).T).T / X.shape[1])
         self.__b = self.__b - alpha * (A - Y).mean()
-   
