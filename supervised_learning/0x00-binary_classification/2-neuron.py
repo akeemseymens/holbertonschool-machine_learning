@@ -15,7 +15,7 @@ class Neuron:
         self.__W = np.random.randn(1, nx)
         self.__b = 0
         self.__A = 0
-    
+
     @property
     def W(self):
         """Returns weights"""
@@ -38,5 +38,5 @@ class Neuron:
         return self.__A
 
     def sigmoid(self, X):
-        """"""
+        """sigmoid function"""
         return 1.0/(1.0 + np.exp(-X))
