@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Class for Neuron"""
+"""Class for Neuron."""
 import numpy as np
 
 
@@ -11,7 +11,7 @@ class Neuron:
         if type(nx) is not int:
             raise TypeError("nx must be a integer")
         if nx < 1:
-            raise ValueError('nx must be a positive integer')
+            raise ValueError("nx must be a positive integer")
         self.W = np.random.normal(size=(1, nx))
         self.b = 0
         self.A = 0
