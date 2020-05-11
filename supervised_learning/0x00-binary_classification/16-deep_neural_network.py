@@ -9,6 +9,7 @@ class DeepNeuralNetwork:
 
     def __init__(self, nx, layers):
         """nx is number of input values"""
+
         if type(nx) is not (int):
             raise TypeError("nx must be an integer")
         if nx < 1:
