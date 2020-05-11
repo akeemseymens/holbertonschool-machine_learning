@@ -6,10 +6,14 @@ import numpy as np
 
 class NeuralNetwork:
     """Neural Network Class"""
-
+    
     def __init__(self, nx, nodes):
-        """Define nx is input values, and nodes are num nodes in hidden layer."""
-
+        """
+        Initializes a binary classification neuron
+        Arguments:
+            nx: the number of input features
+            nodes: the number of nodes found in the hidden layer
+        """
         if type(nx) is not (int):
             raise TypeError("nx must be an integer")
         if nx < 1:
