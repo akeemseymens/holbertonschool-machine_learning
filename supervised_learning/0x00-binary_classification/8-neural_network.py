@@ -8,6 +8,7 @@ class NeuralNetwork:
     """Neural Network Class"""
     def __init__(self, nx, nodes):
         """nx is input values, and nodes are num nodes in hidden layer"""
+
         if type(nx) is not (int):
             raise TypeError("nx must be an integer")
         if nx < 1:
