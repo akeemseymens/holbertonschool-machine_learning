@@ -4,3 +4,6 @@ math/0x02-calculus_old
 *.vscode
 __pycache__
 *.json
+*.ipynb
+*.npz
+supervised_learning/0x00-binary_classification/show_data.py
