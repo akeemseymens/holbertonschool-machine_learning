@@ -16,7 +16,7 @@ class Neuron:
         self.__W = np.random.randn(1, nx)
         self.__b = 0
         self.__A = 0
-    
+
     @property
     def W(self):
         """Returns weights"""
@@ -49,7 +49,7 @@ class Neuron:
     def evaluate(self, X, Y):
         """evaluates neuron predictions"""
         self.forward_prop(X)
-        return np.round(self.__A).astype(int), self.cost(Y, self.__A) 
+        return np.round(self.__A).astype(int), self.cost(Y, self.__A)
 
     def gradient_descent(self, X, Y, A, alpha=0.05):
         """calculates one pass of gradient descent on the nueron"""
