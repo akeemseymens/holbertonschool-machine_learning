@@ -54,7 +54,6 @@ class DeepNeuralNetwork:
         """Return dictionary w/ weights & bias of network."""
         return self.__weights
 
-
     def forward_prop(self, X):
         """Calculate forward propagation of NN."""
         self.__cache["A0"] = X
