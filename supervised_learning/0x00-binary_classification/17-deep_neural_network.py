@@ -6,7 +6,7 @@ import numpy as np
 
 class DeepNeuralNetwork:
     """Deep Neural Network Class."""
-    
+
     def __init__(self, nx, layers):
         """Nx is number of input values"""
         if type(nx) is not (int):
