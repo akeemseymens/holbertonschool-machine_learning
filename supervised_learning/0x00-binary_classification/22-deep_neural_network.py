@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deep NN performing binary classififcation.."""
+"""Deep NN performing binary classififcation."""
 
 import numpy as np
 
@@ -8,7 +8,7 @@ class DeepNeuralNetwork:
     """Deep Neural Network Class."""
 
     def __init__(self, nx, layers):
-        """nx is number of input values"""
+        """Nx is number of input values."""
         if type(nx) is not (int):
             raise TypeError("nx must be an integer")
         if nx < 1:
@@ -56,7 +56,7 @@ class DeepNeuralNetwork:
 
 
     def forward_prop(self, X):
-        """Calculates forward propagation of NN."""
+        """Calculate forward propagation of NN."""
         self.__cache["A0"] = X
         for layer in range(self.__L):
             idx = layer + 1
