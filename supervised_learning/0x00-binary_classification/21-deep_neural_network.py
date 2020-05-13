@@ -75,24 +75,18 @@ class DeepNeuralNetwork:
         return M.round().astype(int), self.cost(Y, M)
 
     def gradient_descent(self, Y, cache, alpha=0.05):
-        """Calculates one pass gradient descent on NN"""
+        """calculate one pass of gradient descent
+           on the neural network"""
 
         m = Y.shape[1]
-        dz = {}
-        for idx_l in reversed(range(self.__L)):
-            dz = {self.__L: self.__cache["A" + str(self.__L)] - Y}
-            strWL = "W" + str(self.__L)
-            strA = "A" + str(idx_l)
-            strW = "W" + str(idx_l)
-            strb = "b" + str(idx_l)
-            strAW = "A" + str(idx_l - 1)
-            if idx_l == self.__L - 1:
-                dz[idx_l] = (np.matmul(self.__weights[strWL].T, dz[idx_l + 1])
-                             * self.__cache[strA] * (1 - self.__cache[strA]))
-
-            if idx_l == self.__L:
-                self.__weights[strW] -= (np.matmul((dz[idx_l]),
-                                         self.__cache[(strAW)].T) * alpha /
-                                         self.__cache[(strAW)].shape[1])
-                self.__weights[strb] -= (dz[idx_l].mean(axis=1, keepdims=True)
-                                         * alpha)
+        last_key = 'A' + str(self.L)
+        dZ = cache[last_key] - Y
+        for i in range(self.L, 0, -1):
+            key = 'A' + str(i - 1)
+            A = cache[key]
+            dW = (1 / m) * np.matmul(dZ, A.T)
+            db1 = (np.sum(dZ, axis=1, keepdims=True) / m)
+            W = self.__weights['W' + str(i)]
+            dZ = np.matmul(W.T, dZ) * (A * (1-A))
+            self.__weights['W' + str(i)] -= alpha * dW
+            self.__weights['b' + str(i)] -= alpha * db1

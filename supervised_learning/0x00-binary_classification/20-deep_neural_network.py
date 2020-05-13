@@ -68,3 +68,8 @@ class DeepNeuralNetwork:
     def cost(self, Y, A):
         """Calculates cost of model using logistic regression"""
         return -(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)).mean()
+
+    def evaluate(self, X, Y):
+        """Evaluates neural network's predictions"""
+        M = self.forward_prop(X)[0]
+        return M.round().astype(int), self.cost(Y, M)

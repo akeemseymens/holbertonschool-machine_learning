@@ -6,4 +6,4 @@ __pycache__
 *.json
 *.ipynb
 *.npz
-supervised_learning/0x00-binary_classification/show_data.py
+*show_data.py
