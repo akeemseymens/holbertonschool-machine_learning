@@ -72,13 +72,12 @@ class DeepNeuralNetwork:
         return -(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)).mean()
 
     def evaluate(self, X, Y):
+        """Evaluates neural network's predictions"""
         M = self.forward_prop(X)[0]
         return M.round().astype(int), self.cost(Y, M)
 
     def gradient_descent(self, Y, cache, alpha=0.05):
-        """calculate one pass of gradient descent
-           on the neural network
-        """
+        """calculate one pass of gradient descent"""
         m = Y.shape[1]
         last_key = 'A' + str(self.L)
         dZ = cache[last_key] - Y
