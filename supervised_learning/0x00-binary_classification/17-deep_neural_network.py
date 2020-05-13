@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""deep NN performing binary classififcation"""
+"""Deep NN performing binary classififcation."""
 
 import numpy as np
 
 
 class DeepNeuralNetwork:
-    """Deep Neural Network Class"""
-
+    """Deep Neural Network Class."""
+    
     def __init__(self, nx, layers):
-        """nx is number of input values"""
+        """Nx is number of input values"""
         if type(nx) is not (int):
             raise TypeError("nx must be an integer")
         if nx < 1:
@@ -35,20 +35,20 @@ class DeepNeuralNetwork:
 
     @property
     def L(self):
-        """returns length of layers"""
+        """Return length of layers."""
         return self.__L
 
     @property
     def nx(self):
-        """returns number of input values"""
+        """Return number of input values."""
         return self.__nx
 
     @property
     def cache(self):
-        """returns dictionary with values of network"""
+        """Return dictionary with values of network."""
         return self.__cache
 
     @property
     def weights(self):
-        """return dictionary with weights & bias of network"""
+        """Return dictionary with weights & bias of network."""
         return self.__weights
