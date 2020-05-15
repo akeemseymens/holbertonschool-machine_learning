@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Deep NN performing binary classififcation."""
+"""deep NN performing binary classififcation"""
 
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
+
 class DeepNeuralNetwork:
-    """Deep Neural Network Class."""
+    """Deep Neural Network Class"""
 
     def __init__(self, nx, layers):
         """nx is number of input values"""
@@ -14,7 +15,7 @@ class DeepNeuralNetwork:
             raise TypeError("nx must be an integer")
         if nx < 1:
             raise ValueError("nx must be a positive integer")
-        #layers list reping num nodes in each layer
+        """layers list reping num nodes in each layer"""
         if type(layers) is not (list) or len(layers) <= 0:
             raise TypeError("layers must be a list of positive integers")
         self.__L = len(layers)
@@ -27,6 +28,7 @@ class DeepNeuralNetwork:
             if type(layers[i_lyr]) is not (int) or layers[i_lyr] < 1:
                 raise TypeError("layers must be a list of positive integers")
             self.__weights[mB] = np.zeros((layers[i_lyr], 1))
+
             if i_lyr == 0:
                 self.__weights[mWts] = (np.random.randn(layers[i_lyr], nx)
                                         * np.sqrt(2 / nx))
@@ -91,8 +93,8 @@ class DeepNeuralNetwork:
             self.__weights['W' + str(i)] -= alpha * dW
             self.__weights['b' + str(i)] -= alpha * db1
 
-    def train(self, X, Y, iterations=5000, alpha=0.05,
-                verbose=True, graph=True, step=100):
+def train(self, X, Y, iterations=5000, alpha=0.05,
+              verbose=True, graph=True, step=100):
         """train the neural network by updating the private attributes"""
         if type(iterations) != int:
             raise TypeError("iterations must be an integer")
@@ -119,7 +121,7 @@ class DeepNeuralNetwork:
             self.gradient_descent(Y, self.cache, alpha)
             if verbose and iteration % step == 0:
                 print("Cost after {} iterations: {}"
-                        .format(iteration, self.cost(Y, output[0])))
+                      .format(iteration, self.cost(Y, output[0])))
                 x.append(iteration)
                 y.append(self.cost(Y, output[0]))
             if graph and iteration % step == 0:
@@ -128,7 +130,7 @@ class DeepNeuralNetwork:
 
         if verbose:
             print("Cost after {} iterations: {}"
-                    .format(iteration, self.cost(Y, output[0])))
+                  .format(iteration, self.cost(Y, output[0])))
         if graph:
             x.append(iteration)
             y.append(self.cost(Y, output[0]))
