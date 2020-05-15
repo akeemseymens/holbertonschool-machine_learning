@@ -70,8 +70,9 @@ class DeepNeuralNetwork:
         return self.cache['A' + str(i + 1)], self.cache
 
     def cost(self, Y, A):
-        """Calculate cost of model using logistic regression."""
-        return -(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)).mean()
+        """define the cost function"""
+        m = Y.shape[1]
+        return -np.sum(Y * np.log(A)) / m()
 
     def evaluate(self, X, Y):
         A, cache = self.forward_prop(X)
