@@ -17,4 +17,3 @@ def one_hot_decode(one_hot):
     if np.sum(one_hot) != one_hot.shape[1]:
         return None
     return np.argmax(one_hot, axis=0)
-    
