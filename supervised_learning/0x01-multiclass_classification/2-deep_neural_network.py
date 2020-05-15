@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""deep NN performing binary classififcation"""
+"""Deep NN performing binary classififcation."""
 
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
 class DeepNeuralNetwork:
-    """Deep Neural Network Class"""
+    """Deep Neural Network Class."""
 
     def __init__(self, nx, layers):
         """nx is number of input values"""
@@ -14,7 +14,7 @@ class DeepNeuralNetwork:
             raise TypeError("nx must be an integer")
         if nx < 1:
             raise ValueError("nx must be a positive integer")
-        """layers list reping num nodes in each layer"""
+        #layers list reping num nodes in each layer
         if type(layers) is not (list) or len(layers) <= 0:
             raise TypeError("layers must be a list of positive integers")
         self.__L = len(layers)
@@ -27,8 +27,6 @@ class DeepNeuralNetwork:
             if type(layers[i_lyr]) is not (int) or layers[i_lyr] < 1:
                 raise TypeError("layers must be a list of positive integers")
             self.__weights[mB] = np.zeros((layers[i_lyr], 1))
-
-
             if i_lyr == 0:
                 self.__weights[mWts] = (np.random.randn(layers[i_lyr], nx)
                                         * np.sqrt(2 / nx))
@@ -79,9 +77,7 @@ class DeepNeuralNetwork:
         return M.round().astype(int), self.cost(Y, M)
 
     def gradient_descent(self, Y, cache, alpha=0.05):
-        """calculate one pass of gradient descent
-           on the neural network"""
-
+        """calculate one pass of gradient descent"""
         m = Y.shape[1]
         last_key = 'A' + str(self.L)
         dZ = cache[last_key] - Y
