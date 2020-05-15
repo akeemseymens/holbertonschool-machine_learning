@@ -93,6 +93,14 @@ class DeepNeuralNetwork:
             self.__weights['W' + str(i)] -= alpha * dW
             self.__weights['b' + str(i)] -= alpha * db1
 
+    def sigmoid(self, Y):
+        """define the sigmoid activation function"""
+        return 1 / (1 + np.exp(-Y))
+
+    def softmax(self, Y):
+        """define the softmax activation function"""
+        return np.exp(Y) / (np.sum(np.exp(Y), axis=0, keepdims=True))
+        
     def train(self, X, Y, iterations=5000, alpha=0.05,
                 verbose=True, graph=True, step=100):
         """Train the neural network by updating the private attributes."""
