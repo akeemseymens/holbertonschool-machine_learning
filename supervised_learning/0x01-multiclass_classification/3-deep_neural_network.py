@@ -74,9 +74,10 @@ class DeepNeuralNetwork:
         return -(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)).mean()
 
     def evaluate(self, X, Y):
-        """Evaluate neural network's predictions."""
-        M = self.forward_prop(X)[0]
-        return M.round().astype(int), self.cost(Y, M)
+        A, cache = self.forward_prop(X)
+        cost = self.cost(Y, A)
+        M = np.max(A, axis=0)
+        return np.where(A == M, 1, 0), costt(Y, M)
 
     def gradient_descent(self, Y, cache, alpha=0.05):
         """Calculate one pass of gradient descent."""
@@ -100,7 +101,7 @@ class DeepNeuralNetwork:
     def softmax(self, Y):
         """define the softmax activation function"""
         return np.exp(Y) / (np.sum(np.exp(Y), axis=0, keepdims=True))
-        
+
     def train(self, X, Y, iterations=5000, alpha=0.05,
                 verbose=True, graph=True, step=100):
         """Train the neural network by updating the private attributes."""
