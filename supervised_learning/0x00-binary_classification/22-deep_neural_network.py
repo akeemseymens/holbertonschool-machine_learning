@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""Deep NN performing binary classififcation."""
+"""deep NN performing binary classififcation"""
 
 import numpy as np
 
 
 class DeepNeuralNetwork:
-    """Deep Neural Network Class."""
+    """Deep Neural Network Class"""
 
     def __init__(self, nx, layers):
-        """Nx is number of input values."""
+        """nx is number of input values"""
         if type(nx) is not (int):
             raise TypeError("nx must be an integer")
         if nx < 1:
             raise ValueError("nx must be a positive integer")
-        #layers list reping num nodes in each layer
+        """layers list reping num nodes in each layer"""
         if type(layers) is not (list) or len(layers) <= 0:
             raise TypeError("layers must be a list of positive integers")
         self.__L = len(layers)
@@ -36,26 +36,26 @@ class DeepNeuralNetwork:
 
     @property
     def L(self):
-        """Return length of layers."""
+        """returns length of layers"""
         return self.__L
 
     @property
     def nx(self):
-        """Return number of input values."""
+        """returns number of input values"""
         return self.__nx
 
     @property
     def cache(self):
-        """Return dictionary with values of network."""
+        """returns dictionary with values of network"""
         return self.__cache
 
     @property
     def weights(self):
-        """Return dictionary w/ weights & bias of network."""
+        """return dictionary w/ weights & bias of network"""
         return self.__weights
 
     def forward_prop(self, X):
-        """Calculate forward propagation of NN."""
+        """Calculates forward propagation of NN"""
         self.__cache["A0"] = X
         for layer in range(self.__L):
             idx = layer + 1
@@ -67,16 +67,18 @@ class DeepNeuralNetwork:
         return self.__cache["A" + str(self.__L)], self.__cache
 
     def cost(self, Y, A):
-        """Calculate cost of model using logistic regression."""
+        """Calculates cost of model using logistic regression"""
         return -(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)).mean()
 
     def evaluate(self, X, Y):
-        """Evaluate neural network's predictions."""
+        """Evaluates neural network's predictions"""
         M = self.forward_prop(X)[0]
         return M.round().astype(int), self.cost(Y, M)
 
     def gradient_descent(self, Y, cache, alpha=0.05):
-        """Calculate one pass of gradient descent."""
+        """calculate one pass of gradient descent
+           on the neural network
+        """
         m = Y.shape[1]
         last_key = 'A' + str(self.L)
         dZ = cache[last_key] - Y
