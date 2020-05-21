@@ -1,8 +1,6 @@
 
 #!/usr/bin/env python3
-"""
-function that returns two placeholdres, x and y, for neural network
-"""
+"""Function that returns two placeholdres, x and y, for neural network"""
 import tensorflow as tf
 
 
