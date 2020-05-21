@@ -7,14 +7,12 @@ import tensorflow as tf
 def evaluate(X, Y, save_path):
     """Evaluate the output of a neural network"""
     with tf.Session() as sess:
-        new_saver = tf.train.import_meta_graph('save_path/model.ckpt.meta')
-        new_saver.restore(sess, save_path)
-        y_pred = tf.get_collection('y_pred')[0]
-        loss = tf.get_collection('loss')[0]
-        accuracy = tf.get_collection('accuracy')[0]
-        y = tf.get_collection('y')[0]
-        x = tf.get_collection('x')[0]
-        pred = sess.run(y_pred, feed_dict={x: X, y: Y})
-        accur = sess.run(accuracy, feed_dict={x: X, y: Y})
-        cost = sess.run(loss, feed_dict={x: X, y: Y})
-    return (pred, accur, cost)
+        save_file = tf.train.import_meta_graph('save_path/model.ckpt.meta')
+        save_file.restore(sess, save_path)
+        var_names = ['x', 'y', 'y_pred', 'accuracy', 'loss']
+        for var_name in var_names:
+            globals()[var_name] = tf.get_collection(var_name)[0]
+        y_pred = sess.run(globals()['y_pred'], feed_dict={x: X, y: Y})
+        loss = sess.run(globals()['loss'], feed_dict={x: X, y: Y})
+        acc = sess.run(globals()['accuracy'], feed_dict={x: X, y: Y})
+    return y_pred, acc, loss
