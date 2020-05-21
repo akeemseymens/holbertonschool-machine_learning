@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""
-Write a function that builds, trains, and saves a neural network classifier
-"""
-import numpy as np
+"""Build, trains, and saves a neural network classifier."""
 import tensorflow as tf
 calculate_accuracy = __import__('3-calculate_accuracy').calculate_accuracy
 calculate_loss = __import__('4-calculate_loss').calculate_loss
@@ -13,7 +10,7 @@ forward_prop = __import__('2-forward_prop').forward_prop
 
 def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
           alpha, iterations, save_path="/tmp/model.ckpt"):
-    """ builds, trains, saves a neural network classifier """
+    """ Build, train, and save the neural network classifier """
     with tf.Session() as sess:
         x, y = create_placeholders(X_train.shape[1], Y_train.shape[1])
 
@@ -36,16 +33,12 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
             vl = sess.run(loss, feed_dict={x: X_valid, y: Y_valid})
             va = sess.run(accuracy, feed_dict={x: X_valid, y: Y_valid})
             if i % 100 == 0 or i == iterations:
-                print("After {} iterations:\n".format(i))
+                print("After {} iterations:".format(i))
                 print("\tTraining Cost: {}".format(tl))
                 print("\tTraining Accuracy: {}".format(ta))
                 print("\tValidation Cost: {}".format(vl))
                 print("\tValidation Accuracy: {}".format(va))
             if i < iterations:
-                print("After {} iterations:\n".format(i))
-                print("\tTraining Cost: {}".format(tl))
-                print("\tTraining Accuracy: {}".format(ta))
-                print("\tValidation Cost: {}".format(vl))
-                print("\tValidation Accuracy: {}".format(va))
                 sess.run(train_op, feed_dict={x: X_train, y: Y_train})
-        return (saver.save(sess, 'save_path/model.ckpt'))
+        end_sess = saver.save(sess, save_path)
+    return end_sess
