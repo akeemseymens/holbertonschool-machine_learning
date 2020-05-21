@@ -1,8 +1,6 @@
   
 #!/usr/bin/env python3
 """Evaluates the output of a neural network"""
-import matplotlib.pyplot as plt
-import numpy as np
 import tensorflow as tf
 
 
