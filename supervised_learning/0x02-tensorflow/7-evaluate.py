@@ -1,11 +1,10 @@
-  
 #!/usr/bin/env python3
 """Evaluates the output of a neural network"""
 import tensorflow as tf
 
 
 def evaluate(X, Y, save_path):
-    """evaluate the output of a neural network"""
+    """Evaluate the output of a neural network"""
     with tf.Session() as sess:
         new_saver = tf.train.import_meta_graph('save_path/model.ckpt.meta')
         new_saver.restore(sess, save_path)
