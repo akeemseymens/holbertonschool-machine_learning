@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""
-fuction that creates the forward propagation graph for the neural network
-"""
+"""Create the forward propagation graph for the neural network."""
+
 import tensorflow as tf
 
 create_layer = __import__('1-create_layer').create_layer

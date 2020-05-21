@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""
-Return the tensor output of the layer
-"""
+"""Return the tensor output of the layer."""
+
 import tensorflow as tf
 
 

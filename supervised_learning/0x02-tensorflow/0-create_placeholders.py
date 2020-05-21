@@ -1,5 +1,5 @@
-
 #!/usr/bin/env python3
+
 """Function that returns two placeholdres, x and y, for neural network"""
 import tensorflow as tf
 
